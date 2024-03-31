@@ -152,7 +152,6 @@ class TransformerModel(nn.Module):
         return torch.cat([prediction_1, prediction_2], dim=1)
 
     def forward(self, xs, ys, prompt_type, prompt_row, prompt_col, inds=None, att_mask=None):
-        output_attention = None
         if inds is None:
             inds = torch.arange(ys.shape[1])
         else:
@@ -184,7 +183,8 @@ class TransformerModel(nn.Module):
             output = self._backbone(inputs_embeds=embeds).last_hidden_state
         else:
             output = self._backbone(inputs_embeds=embeds, head_mask=att_mask).last_hidden_state
-            output_attention = self._backbone(inputs_embeds=embeds, output_attentions=True).attentions
+
+        output_attention = self._backbone(inputs_embeds=embeds, output_attentions=True).attentions
 
         prediction = self._read_out(output)
 
