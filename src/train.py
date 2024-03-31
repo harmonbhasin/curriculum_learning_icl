@@ -339,7 +339,7 @@ if __name__ == "__main__":
         with open(os.path.join(out_dir, "config.yaml"), "w") as yaml_file:
             yaml.dump(args.__dict__, yaml_file, default_flow_style=False)
 
-    api_key = 'a033029380789b03489a37e2e55903078f6f49be'
+    # Enter api key for wandb under variable api_key
     wandb.login(key=api_key)
 
     main(args)
