@@ -1,0 +1,31 @@
+inherit: 
+    - models/standard.yaml
+    - wandb.yaml
+
+model:
+    n_dims: 20
+    n_positions: 101
+    transformer_seed: 0
+
+training:
+    task_kwargs: {}
+    data_kwargs: {}
+    prompt_kwargs: {} # encoding = static (one hot encoded vector), dynamic (moves with tasks/samples); position = 0 (default) anywhere they wish; type = data or task
+    val_kwargs: {}
+
+    batch_size: 64
+    learning_rate: 0.0001
+    save_every_steps: 1000
+    keep_every_steps: 100000
+    train_steps: 500001
+    n_points: 100
+
+    weight_type: standard # standard = normal, normalized = normalized
+    prompt_type: standard # standard = none, model_one = dummy token with underlying embedding, model_two = one dummmy token, model_three = two dumm token
+    val_type: current_tasks # standard = none, current_tasks = current task(s), provided_tasks = provided tasks via valdation_kwargs, current_plus_provided_tasks = tasks_kwargs + validation_kwargs
+
+    data_split: blocks_based # steps_based = break down by total steps, block_based = break down by block
+    data_schedule: sequential # sequential = go down the list in order, random = randomly sample, mixed_sequential = go down the list in order, but sample from previous tasks with equal probability
+
+    task_schedule: sequential # sequential = go down the list in order, random = randomly sample from any given task, mixed_sequential = go down the list in order, but sample from previous tasks with equal probability
+

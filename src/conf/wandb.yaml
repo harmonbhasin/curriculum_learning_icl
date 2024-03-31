@@ -1,0 +1,5 @@
+wandb:
+    project: icl_test
+    entity: iclbadgers
+    notes:
+    log_every_steps: 100
