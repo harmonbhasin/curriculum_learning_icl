@@ -14,5 +14,7 @@ Paper: https://openreview.net/forum?id=ZJ91L3XvqF <br><br>
     }
 ```
 
+Models used in the paper can be found by going to Box and downloading the folder found here: https://uwmadison.box.com/s/09ip5oht977fxp3mvebkykxwbbwvl4ls 
+
 # Maintainers
 * [Harmon Bhasin](https://harmonbhasin.com/)
